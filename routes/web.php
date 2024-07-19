@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Livewire\Auth\Login;
+use App\Livewire\Auth\Register;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +27,13 @@ Route::get('/users', function () {
 
 Route::get('/user/{id}', [UserController::class, 'show'])->name('users.details');
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+
+Auth::routes(['login' => false,'register' => false]);
+
+Route::middleware('guest')->group(function(){
+    Route::get('/login', Login::class)->name('login');
+    Route::get('/register', Register::class)->name('register');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
