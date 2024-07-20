@@ -37,7 +37,6 @@ class Register extends Component
         ]);
 
         Auth::login($user, true);
-        return redirect()->to('home');
-        // return redirect()->route('users');
+        return redirect()->to('users');
     }
 }

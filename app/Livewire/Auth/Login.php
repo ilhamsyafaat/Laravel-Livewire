@@ -43,6 +43,6 @@ class Login extends Component
             return null;
         }
 
-        return redirect()->to('home');
+        return redirect()->to('users');
     }
 }
