@@ -21,6 +21,21 @@
                     </div>    
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Photo</label>
+                    <input type="file" class="form-control @error('photo') is-invalid @enderror" wire:model="photo">
+                    @error('photo')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>    
+                    @enderror
+
+                    @if ($photo)
+                        <img src="{{ $photo->temporaryUrl() }}" alt="Photo Preview" width="100">
+                    @elseif ($photo_old)
+                        <img src="{{ Storage::url($photo_old) }}" alt="Current Photo" width="100">
+                    @endif
+                </div>
                 <button type="submit" class="btn btn-primary">Update</button>    
             </form>
         </div>

@@ -11,6 +11,7 @@
                 <th>No</th>
                 <th>Nama</th>
                 <th>Email</th>
+                <th>Photo</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -21,6 +22,13 @@
                 <td>{{ $users->firstItem() + $index }}</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
+                <td>
+                    @if ($item->photo)
+                        <img src="{{ Storage::url($item->photo) }}" alt="{{ $item->name }}" width="50">
+                    @else
+                        Tidak ada Photo
+                    @endif
+                </td>
                 <td>
                     <a href="{{ route('users.details', $item->id) }}" class="badge bg-primary">Detail</a>
                     <a href="{{ route('users.edit', $item->id) }}" class="badge bg-warning">Edit</a>

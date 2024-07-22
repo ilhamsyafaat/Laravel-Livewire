@@ -43,6 +43,6 @@ class Login extends Component
             return null;
         }
 
-        return redirect()->to('users');
+        return $this->redirect('users', navigate: true);
     }
 }
